@@ -10,16 +10,17 @@
   --realwhite: #fafafa;
   --white: #eaeaea;
   --black: #3c3c3c;
+  --purple: #b91450;
 }
 body {
   font-family: 'Inter', sans-serif;
-  min-width: 500px;
   background-color: var(--white);
   color: var(--black);
 }
 main {
-  width: 60%;
-  margin: 0 auto;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
   text-align: center;
 }
 
@@ -27,17 +28,14 @@ main {
 **  FORM
 */
 /* INPUT FORM */
+main .input_form {
+  margin: 10px;
+}
 main .input_form .form_box {
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 30px 0;
-  padding: 30px 50px;
-  color: var(--black);
-  border-radius: 5px;
-  background-color: var(--white);
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 }
 main .input_form .form_box .row_in {
   display: flex;
@@ -87,7 +85,6 @@ main .msg_content {
   justify-content: center;
   align-items: center;
   height: 100%;
-  /* border: 1px solid red; */
 }
 main .input_form #msg button {
   margin-top: 10px;
@@ -96,30 +93,33 @@ main .input_form #msg button {
 /****************************************************************
 **  DICE GAME
 */
-#dice_game {
+.gambling {
+  margin: 10px;
+}
+.gambling #dice_game {
   margin-top: 20px;
 }
-.dice_container {
+.gambling #dice_game .dice_container {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-#dice_game .die_box {
+.gambling #dice_game .dice_container .die_box {
   width: 100px;
   height: 100px;
-  margin: 20px;
+  margin: 10px;
   overflow: hidden;
   border-radius: 10%;
   background-color: var(--realwhite);
   box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
 }
-.die {
+.gambling #dice_game .dice_container .die_box .die {
   position: relative;
   width: 100%;
   height: 100%;
   padding: 5px;
 }
-.die .fas {
+.gambling #dice_game .dice_container .die_box .die .fas {
   position: absolute;
   top: -12px;
   left: -2px;
@@ -129,13 +129,26 @@ main .input_form #msg button {
   color: var(--realwhite);
   background-color: var(--black);
 }
-#dice_msg {
+.gambling #dice_game #dice_msg {
+  margin-top: 10px;
+  color: var(--purple);
   display: block;
 }
 
+/****************************************************************
+**  CARD
+*/
+.card {
+  margin: 30px 0;
+  padding: 30px 50px;
+  color: var(--black);
+  border-radius: 5px;
+  background-color: var(--white);
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
 
 /****************************************************************
-**  PANEL ON/OFF
+**  DISPLAY ON/OFF
 */
 .hide {
   visibility: hidden;
@@ -149,7 +162,7 @@ main .input_form #msg button {
 }
 
 /****************************************************************
-**  BUTTON
+**  BUTTONS
 */
 button {
   padding: 5px 15px;
@@ -164,10 +177,10 @@ button {
 **  TEXTS
 */
 .ms_txt_title {
-  font-size: 1.5em;
+  font-size: 1.4em;
   font-weight: 700;
   text-transform: uppercase;
-  margin: 30px 0;
+  /* margin: 10px 0; */
 }
 .ms_txt_1 {
   display: inline-block;

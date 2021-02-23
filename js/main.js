@@ -1,7 +1,7 @@
 //###################################################### 
 // MAIL
 
-// init
+// global variables
 var usrEmailValue, 
     checkOK = 0,
     emailList = [
@@ -14,7 +14,7 @@ var usrEmailValue,
       'rudolf.nuriev@ballet.ru',
     ];
 
-// list in console
+// email list in console
 console.log('-- email list -----------------------');
 for (var i = 0; i < emailList.length; i++) {
   console.log('#'+(i+1)+' '+emailList[i]);
@@ -49,8 +49,8 @@ checkBtn.addEventListener('click',
       // message
       if (index != null) {
         checkOK = 1;
-        checkMsgHtml.innerHTML = 'Sei nella lista! <br>Posizione #'+(index+1)+'<br>E-Mail: '+ emailList[index];
-        console.log('Sei nella lista!\nposto: '+(index+1)+'\nemail: '+ emailList[index]);
+        checkMsgHtml.innerHTML = '<strong>Sei nella lista!</strong><br>Posizione #'+(index+1)+'<br>E-Mail: '+ emailList[index];
+        console.log('Sei nella lista!\nposizione #'+(index+1)+'\nemail: '+ emailList[index]);
       } else {
         checkOK = 0;
         checkMsgHtml.innerHTML = usrEmailValue + ' non è nella lista!';
@@ -71,7 +71,7 @@ resumeBtn.addEventListener('click',
     checkMsgHtml.innerHTML = '';
     if (checkOK == 1) {
       // form erasing
-      usrEmailForm.value       = '';
+      usrEmailForm.value = '';
     }
   }
 );
@@ -81,64 +81,70 @@ var eraseBtn = document.getElementById('erase_btn');
 eraseBtn.addEventListener('click', 
   function() {
     // form erasing
-    usrEmailForm.value       = '';
+    usrEmailForm.value = '';
   }
 );
 
 //###################################################### 
 // DADI
 
-// ** DICE GAME **
-var gamblingBtn = document.getElementById('gambling_btn');
-gamblingBtn.addEventListener('click', 
-  function() {
-
-    // game elements
-    var face = [
+// game elements
+var face = [
       '<i class="fas fa-dice-one"></i>',
       '<i class="fas fa-dice-two"></i>',
       '<i class="fas fa-dice-three"></i>',
       '<i class="fas fa-dice-four"></i>',
       '<i class="fas fa-dice-five"></i>',
       '<i class="fas fa-dice-six"></i>',
-    ];
-    var stat = [
-      ['usr',1],
-      ['sky',1],
-    ];
-    console.log(stat);
+    ],
+    stat = [[],[]],
+    finalMsg = '',
+    msg1 = 'Hai vinto!',
+    msg2 = 'Ha vinto SkyNet!',
+    msg3 = 'Avete pareggiato!';
 
-    var finalMsg = '',
-        msg1 = 'Hai vinto!',
-        msg2 = 'Ha vinto SkyNet!',
-        msg3 = 'Avete pareggiato!';
+// html display hooks
+var diceGame   = document.getElementById('dice_game');
+var diceStat   = document.getElementById('dice_stat');
+var dieFaceUsr = document.getElementById('die_face_usr');
+var dieFaceSky = document.getElementById('die_face_sky');
+var diceMsg    = document.getElementById('dice_msg');
+
+// ** DICE GAME **
+var gamblingBtn = document.getElementById('gambling_btn');
+gamblingBtn.addEventListener('click', 
+  function() {
 
     // dice launch
     var usrLaunch = Math.floor(Math.random() * 6) + 1;
     var skyLaunch = Math.floor(Math.random() * 6) + 1;
     
     // stat
-    stat.push(usrLaunch,skyLaunch);
-    // stat.push(skyLaunch);
+    stat[0].push(usrLaunch);
+    stat[1].push(skyLaunch);
     console.log(stat);
+    var statMsg = '';
+    var statSum = [0,0];
+    for (var i=0; i<stat[0].length; i++) statSum[0] += stat[0][i];
+    for (var j=0; j<stat[1].length; j++) statSum[1] += stat[1][j];
+    console.log('user   statSum[0]='+statSum[0]);
+    console.log('skynet statSum[1]='+statSum[1]);
+    statMsg = 'Punti totali<br>Tu : '+statSum[0]+'<br> SkyNet : '+statSum[1];
 
     // message 
     if      (usrLaunch > skyLaunch) finalMsg = msg1;
     else if (usrLaunch < skyLaunch) finalMsg = msg2;
     else                            finalMsg = msg3;
-    console.log('-- dice game ------------------------\n'+
-                'user:   '+usrLaunch+'\n'+
-                'skynet: '+skyLaunch+'\n'+
-                finalMsg);
+    console.log( '-- dice game ------------------------\n'+
+                 'user:   '+usrLaunch+'\n'+
+                 'skynet: '+skyLaunch+'\n'+
+                 finalMsg );
 
-                
-    var diceGame = document.getElementById('dice_game');
-    var dieFaceUsr = document.getElementById('die_face_usr');
-    var dieFaceSky = document.getElementById('die_face_sky');
-    var diceMsg = document.getElementById('dice_msg');
+    // result display
     dieFaceUsr.innerHTML = face[usrLaunch-1];
     dieFaceSky.innerHTML = face[skyLaunch-1];
     diceMsg.innerHTML = finalMsg;
+    diceStat.innerHTML = statMsg;
     diceGame.className = 'show';
   }
 );

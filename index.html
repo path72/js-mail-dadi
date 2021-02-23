@@ -20,42 +20,11 @@
   </head>
   <body>
 
-    <!------------------------------------------
-
-      Ciao ragazzi,
-      Esercizio di oggi:
-
-      cartella/repo js-mail-dadi
-
-      Mail
-        1. Chiedi all’utente la sua email,
-        2. controlla che sia nella lista di chi può accedere,
-        3. stampa un messaggio appropriato sull’esito del controllo.
-
-      Gioco dei dadi
-        1. Generare un numero random da 1 a 6, 
-            sia per il giocatore sia per il computer
-        2. Stabilire il vincitore, in base a chi fa il punteggio più alto.
-
-        Prima di partire a scrivere codice poniamoci qualche domanda:
-        Che ci sia un array da qualche parte?
-        Se dobbiamo confrontare qualcosa che "cosa" ci serve?
-
-      Consigli del giorno:
-      1. scriviamo sempre prima dei commenti in italiano per capire cosa vogliamo fare
-      2. javascript non fa nulla da solo, dobbiamo dirgli noi cosa vogliamo fare
-      3. si ma noi cosa vogliamo fare?
-      4. torniamo a scrivere in italiano
-      5. proviamo ad immaginare le operazioni che vogliamo far svolgere al nostro programma così come lo faremmo "a mano"
-      Buon lavoro e buon divertimento! :blush: (edited) 
-
-    ------------------------------------------->
-
     <main>
 
       <section class="input_form">
         <h1 class="ms_txt_title">controlla se puoi accedere</h1>
-        <div class="form_box">
+        <div class="form_box card">
           <div class="row_in">
             <div class="input_box">
               <label for="usr_email" class="ms_txt_1">E-Mail</label>
@@ -75,27 +44,29 @@
         </div> <!--form_box-->
       </section>
       
-      <section id="gambling" class="show">
+      <section class="gambling">
         <h1 class="ms_txt_title">Gioca a dadi con SkyNet!</h1>
-        <button id="gambling_btn">Tira i dadi!</button>
-        <div id="dice_game" class="hide">
-          <div class="dice_container">
-            <div class="die_frame">
-              <h4>Tu</h4>
-              <div class="die_box">
-                <div id="die_face_usr" class="die"></div>
+        <div class="card">
+          <button id="gambling_btn">Lancia i dadi!</button>
+          <div id="dice_game" class="hide">
+            <div class="dice_container">
+              <div class="die_frame">
+                <h4>Tu</h4>
+                <div class="die_box">
+                  <div id="die_face_usr" class="die"></div>
+                </div>
+              </div>
+              <div class="die_frame">
+                <h4>SkyNet</h4>
+                <div class="die_box">
+                  <div id="die_face_sky" class="die"></div>
+                </div>
               </div>
             </div>
-            <div class="die_frame">
-              <h4>SkyNet</h4>
-              <div class="die_box">
-                <div id="die_face_sky" class="die"></div>
-              </div>
-            </div>
+            <div id="dice_msg" class="ms_txt_1"></div>
+            <div id="dice_stat" class="ms_txt_1"></div>
           </div>
-          <div id="dice_msg" class="ms_txt_1"></div>
-          <div id="dice_stat" class="ms_txt_1">stat</div>
-          </div>
+        </div>  
       </section>      
 
     </main>

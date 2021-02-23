@@ -50,7 +50,7 @@ checkBtn.addEventListener('click',
       if (index != null) {
         checkOK = 1;
         checkMsgHtml.innerHTML = 'Sei nella lista! <br>Posizione #'+(index+1)+'<br>E-Mail: '+ emailList[index];
-        console.log('Sei nella lista!\nposto: '+index+'\nemail: '+ emailList[index]);
+        console.log('Sei nella lista!\nposto: '+(index+1)+'\nemail: '+ emailList[index]);
       } else {
         checkOK = 0;
         checkMsgHtml.innerHTML = usrEmailValue + ' non è nella lista!';
@@ -70,7 +70,7 @@ resumeBtn.addEventListener('click',
     msgHtml.className = 'hide';
     checkMsgHtml.innerHTML = '';
     if (checkOK == 1) {
-      // data erasing
+      // form erasing
       usrEmailForm.value       = '';
     }
   }
@@ -80,10 +80,7 @@ resumeBtn.addEventListener('click',
 var eraseBtn = document.getElementById('erase_btn');
 eraseBtn.addEventListener('click', 
   function() {
-    // msg hiding
-    msgHtml.className = 'hide';
-    checkMsgHtml.innerHTML = '';
-    // data erasing
+    // form erasing
     usrEmailForm.value       = '';
   }
 );

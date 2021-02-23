@@ -1,31 +1,91 @@
 //###################################################### 
 // MAIL
 
-var emailList = [
-  'frida.kahlo@vivalavida.org',
-  'ludwig.beethoven@komponist.de',
-  'tina.modotti@resistenza.net',
-  'ipazia@logos.org',
-  'charles.chaplin@actor.us',
-  'sebastiao.salgado@perspectiva.br',
-  'rudolf.nuriev@ballet.ru',
-];
+// init
+var usrEmailValue, 
+    checkOK = 0,
+    emailList = [
+      'frida.kahlo@vivalavida.org',
+      'ludwig.beethoven@komponist.de',
+      'tina.modotti@resistenza.net',
+      'ipazia@logos.org',
+      'charles.chaplin@actor.us',
+      'sebastiao.salgado@perspectiva.br',
+      'rudolf.nuriev@ballet.ru',
+    ];
 
-var usrEmail = prompt('inserisci la tua email');
-
-var index = null;
+// list in console
 for (var i = 0; i < emailList.length; i++) {
-  if (usrEmail == emailList[i]) {
-    index = i;
+  console.log('#'+(i+1)+' '+emailList[i]);
+}
+
+// form sources
+var usrEmailForm = document.getElementById('usr_email');
+
+// info display hooks
+var msgHtml       = document.getElementById('msg');
+var checkMsgHtml  = document.getElementById('check_msg');
+
+// ** EMAIL CHECK **
+var checkBtn = document.getElementById('check_btn');
+checkBtn.addEventListener('click', 
+  function() {
+
+    // data retrieving
+    usrEmailValue = usrEmailForm.value;
+    console.log('usrEmailValue = ' + usrEmailValue );
+
+    // consistency check
+    if (usrEmailValue == '') {
+      msgHtml.className = 'show';
+      checkMsgHtml.innerHTML = 'Compila e-mail!';
+    } else {
+      // checking user email 
+      var index = null;
+      for (var i = 0; i < emailList.length; i++) {
+        if (usrEmailValue == emailList[i]) index = i;
+      }
+      // message
+      if (index != null) {
+        checkOK = 1;
+        checkMsgHtml.innerHTML = 'Sei nella lista! <br>Posizione #'+(index+1)+'<br>E-Mail: '+ emailList[index];
+        console.log('Sei nella lista!\nposto: '+index+'\nemail: '+ emailList[index]);
+      } else {
+        checkOK = 0;
+        checkMsgHtml.innerHTML = usrEmailValue + ' non è nella lista!';
+        console.log(usrEmailValue + ' non è nella lista!');
+      }
+      // msg display
+      msgHtml.className = 'show';
+    }
   }
-}
+);
 
-if (index != null) {
-  console.log('Sei nella lista!\nposto: '+index+'\nemail: '+ emailList[index]);
-} else {
-  console.log('Non sei nella lista!');
-}
+// ** CHECK RESUME **
+var resumeBtn = document.getElementById('resume_btn');
+resumeBtn.addEventListener('click', 
+  function() {
+    // msg hiding
+    msgHtml.className = 'hide';
+    checkMsgHtml.innerHTML = '';
+    if (checkOK == 1) {
+      // data erasing
+      usrEmailForm.value       = '';
+    }
+  }
+);
 
+// ** CHECK REDO **
+var eraseBtn = document.getElementById('erase_btn');
+eraseBtn.addEventListener('click', 
+  function() {
+    // msg hiding
+    msgHtml.className = 'hide';
+    checkMsgHtml.innerHTML = '';
+    // data erasing
+    usrEmailForm.value       = '';
+  }
+);
 
 //###################################################### 
 // DADI

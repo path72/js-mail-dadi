@@ -104,11 +104,13 @@ var face = [
     msg3 = 'Avete pareggiato!';
 
 // html display hooks
-var diceGame   = document.getElementById('dice_game');
-var diceStat   = document.getElementById('dice_stat');
-var dieFaceUsr = document.getElementById('die_face_usr');
-var dieFaceSky = document.getElementById('die_face_sky');
-var diceMsg    = document.getElementById('dice_msg');
+var diceGame   = document.getElementById('dice_game'),
+    diceStat   = document.getElementById('dice_stat'),
+    dieFaceUsr = document.getElementById('die_face_usr'),
+    dieFaceSky = document.getElementById('die_face_sky'),
+    diceMsg    = document.getElementById('dice_msg'),
+    dieBoxUsr  = document.getElementById('die_box_usr');
+    dieBoxSky  = document.getElementById('die_box_sky');
 
 // ** DICE GAME **
 var gamblingBtn = document.getElementById('gambling_btn');
@@ -146,5 +148,8 @@ gamblingBtn.addEventListener('click',
     diceMsg.innerHTML = finalMsg;
     diceStat.innerHTML = statMsg;
     diceGame.className = 'show';
+    // dice rotation
+    dieBoxUsr.style.transform += 'rotate(360deg)';
+    dieBoxSky.style.transform += 'rotate(360deg)';
   }
 );

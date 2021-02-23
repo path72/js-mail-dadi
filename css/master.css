@@ -112,6 +112,7 @@ main .input_form #msg button {
   border-radius: 10%;
   background-color: var(--realwhite);
   box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+  transition: transform .5s ease-in-out;
 }
 .gambling #dice_game .dice_container .die_box .die {
   position: relative;

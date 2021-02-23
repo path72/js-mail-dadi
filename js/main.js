@@ -15,6 +15,7 @@ var usrEmailValue,
     ];
 
 // list in console
+console.log('-- email list -----------------------');
 for (var i = 0; i < emailList.length; i++) {
   console.log('#'+(i+1)+' '+emailList[i]);
 }
@@ -90,14 +91,23 @@ eraseBtn.addEventListener('click',
 //###################################################### 
 // DADI
 
-var usrLaunch = Math.floor(Math.random() * 6) + 1;
-var skyLaunch = Math.floor(Math.random() * 6) + 1;
-console.log('user:   '+usrLaunch+'\nskynet: '+skyLaunch);
+// ** DICE GAME **
+var gamblingBtn = document.getElementById('gambling_btn');
+gamblingBtn.addEventListener('click', 
+  function() {
+    alert('ancora devo fare la UI!\nguarda in console...');
 
-if (usrLaunch > skyLaunch) {
-  console.log('vince user!');
-} else if (usrLaunch < skyLaunch) {
-  console.log('vince skynet!');
-} else {
-  console.log('pareggio!');
-}
+    var usrLaunch = Math.floor(Math.random() * 6) + 1;
+    var skyLaunch = Math.floor(Math.random() * 6) + 1;
+    console.log('-- dice game ------------------------\nuser:   '+usrLaunch+'\nskynet: '+skyLaunch);
+    
+    if (usrLaunch > skyLaunch) {
+      console.log('vince user!');
+    } else if (usrLaunch < skyLaunch) {
+      console.log('vince skynet!');
+    } else {
+      console.log('pareggio!');
+    }
+
+  }
+);

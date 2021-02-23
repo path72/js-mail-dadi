@@ -149,7 +149,7 @@ gamblingBtn.addEventListener('click',
     diceStat.innerHTML = statMsg;
     diceGame.className = 'show';
     // dice rotation
-    dieBoxUsr.style.transform += 'rotate(360deg)';
-    dieBoxSky.style.transform += 'rotate(360deg)';
+    dieBoxUsr.style.transform += 'rotate(290deg)';
+    dieBoxSky.style.transform += 'rotate(175deg)';
   }
 );

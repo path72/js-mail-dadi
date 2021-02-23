@@ -107,11 +107,11 @@ main .input_form #msg button {
 .gambling #dice_game .dice_container .die_box {
   width: 100px;
   height: 100px;
-  margin: 10px;
+  margin: 20px;
   overflow: hidden;
   border-radius: 10%;
   background-color: var(--realwhite);
-  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 0px 50px;
   transition: transform .5s ease-in-out;
 }
 .gambling #dice_game .dice_container .die_box .die {

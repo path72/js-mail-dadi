@@ -92,19 +92,53 @@ eraseBtn.addEventListener('click',
 var gamblingBtn = document.getElementById('gambling_btn');
 gamblingBtn.addEventListener('click', 
   function() {
-    alert('ancora devo fare la UI!\nguarda in console...');
 
+    // game elements
+    var face = [
+      '<i class="fas fa-dice-one"></i>',
+      '<i class="fas fa-dice-two"></i>',
+      '<i class="fas fa-dice-three"></i>',
+      '<i class="fas fa-dice-four"></i>',
+      '<i class="fas fa-dice-five"></i>',
+      '<i class="fas fa-dice-six"></i>',
+    ];
+    var stat = [
+      ['usr',1],
+      ['sky',1],
+    ];
+    console.log(stat);
+
+    var finalMsg = '',
+        msg1 = 'Hai vinto!',
+        msg2 = 'Ha vinto SkyNet!',
+        msg3 = 'Avete pareggiato!';
+
+    // dice launch
     var usrLaunch = Math.floor(Math.random() * 6) + 1;
     var skyLaunch = Math.floor(Math.random() * 6) + 1;
-    console.log('-- dice game ------------------------\nuser:   '+usrLaunch+'\nskynet: '+skyLaunch);
     
-    if (usrLaunch > skyLaunch) {
-      console.log('vince user!');
-    } else if (usrLaunch < skyLaunch) {
-      console.log('vince skynet!');
-    } else {
-      console.log('pareggio!');
-    }
+    // stat
+    stat.push(usrLaunch,skyLaunch);
+    // stat.push(skyLaunch);
+    console.log(stat);
 
+    // message 
+    if      (usrLaunch > skyLaunch) finalMsg = msg1;
+    else if (usrLaunch < skyLaunch) finalMsg = msg2;
+    else                            finalMsg = msg3;
+    console.log('-- dice game ------------------------\n'+
+                'user:   '+usrLaunch+'\n'+
+                'skynet: '+skyLaunch+'\n'+
+                finalMsg);
+
+                
+    var diceGame = document.getElementById('dice_game');
+    var dieFaceUsr = document.getElementById('die_face_usr');
+    var dieFaceSky = document.getElementById('die_face_sky');
+    var diceMsg = document.getElementById('dice_msg');
+    dieFaceUsr.innerHTML = face[usrLaunch-1];
+    dieFaceSky.innerHTML = face[skyLaunch-1];
+    diceMsg.innerHTML = finalMsg;
+    diceGame.className = 'show';
   }
 );

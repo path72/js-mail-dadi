@@ -103,7 +103,6 @@ var face = [
     msg2 = 'Ha vinto SkyNet!',
     msg3 = 'Avete pareggiato!';
 
-
 // ** DICE GAME **
 var gamblingBtn = document.getElementById('gambling_btn');
 gamblingBtn.addEventListener('click', 
@@ -112,11 +111,11 @@ gamblingBtn.addEventListener('click',
     // html display hooks
     var diceGame   = document.getElementById('dice_game'),
         diceStat   = document.getElementById('dice_stat'),
+        dieBoxUsr  = document.getElementById('die_box_usr'),
+        dieBoxSky  = document.getElementById('die_box_sky'),
         dieFaceUsr = document.getElementById('die_face_usr'),
         dieFaceSky = document.getElementById('die_face_sky'),
-        diceMsg    = document.getElementById('dice_msg'),
-        dieBoxUsr  = document.getElementById('die_box_usr'),
-        dieBoxSky  = document.getElementById('die_box_sky');
+        diceMsg    = document.getElementById('dice_msg');
 
     // dice launch [1,6]
     var usrLaunch = Math.floor(Math.random() * 6) + 1;

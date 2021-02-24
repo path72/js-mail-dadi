@@ -103,21 +103,22 @@ var face = [
     msg2 = 'Ha vinto SkyNet!',
     msg3 = 'Avete pareggiato!';
 
-// html display hooks
-var diceGame   = document.getElementById('dice_game'),
-    diceStat   = document.getElementById('dice_stat'),
-    dieFaceUsr = document.getElementById('die_face_usr'),
-    dieFaceSky = document.getElementById('die_face_sky'),
-    diceMsg    = document.getElementById('dice_msg'),
-    dieBoxUsr  = document.getElementById('die_box_usr');
-    dieBoxSky  = document.getElementById('die_box_sky');
 
 // ** DICE GAME **
 var gamblingBtn = document.getElementById('gambling_btn');
 gamblingBtn.addEventListener('click', 
   function() {
 
-    // dice launch
+    // html display hooks
+    var diceGame   = document.getElementById('dice_game'),
+        diceStat   = document.getElementById('dice_stat'),
+        dieFaceUsr = document.getElementById('die_face_usr'),
+        dieFaceSky = document.getElementById('die_face_sky'),
+        diceMsg    = document.getElementById('dice_msg'),
+        dieBoxUsr  = document.getElementById('die_box_usr');
+        dieBoxSky  = document.getElementById('die_box_sky');
+
+    // dice launch [1,6]
     var usrLaunch = Math.floor(Math.random() * 6) + 1;
     var skyLaunch = Math.floor(Math.random() * 6) + 1;
     
@@ -129,8 +130,8 @@ gamblingBtn.addEventListener('click',
     var statSum = [0,0];
     for (var i=0; i<stat[0].length; i++) statSum[0] += stat[0][i];
     for (var j=0; j<stat[1].length; j++) statSum[1] += stat[1][j];
-    console.log('user   statSum[0]='+statSum[0]);
-    console.log('skynet statSum[1]='+statSum[1]);
+    console.log( 'user   statSum[0]='+statSum[0]+'\n'+
+                 'skynet statSum[1]='+statSum[1] );
     statMsg = 'Punti totali<br>Tu : '+statSum[0]+'<br> SkyNet : '+statSum[1];
 
     // message 
@@ -148,8 +149,20 @@ gamblingBtn.addEventListener('click',
     diceMsg.innerHTML = finalMsg;
     diceStat.innerHTML = statMsg;
     diceGame.className = 'show';
+
     // dice rotation
-    dieBoxUsr.style.transform += 'rotate(290deg)';
-    dieBoxSky.style.transform += 'rotate(175deg)';
+    
+    // #1 transition + transform rotate js injection
+    // var usrRot = Math.floor(Math.random() * 361);
+    // var skyRot = Math.floor(Math.random() * 361);
+    // dieBoxUsr.style.transform = 'rotate('+usrRot+'deg)';
+    // dieBoxSky.style.transform = 'rotate('+skyRot+'deg)';
+    
+    // #2: remove+reinsert animated node element
+    var dieBoxUsrClone = dieBoxUsr.cloneNode(true);
+    var dieBoxSkyClone = dieBoxSky.cloneNode(true);
+    dieBoxUsr.parentNode.replaceChild(dieBoxUsrClone,dieBoxUsr);
+    dieBoxSky.parentNode.replaceChild(dieBoxSkyClone,dieBoxSky);
+
   }
 );

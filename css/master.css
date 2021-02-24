@@ -112,15 +112,21 @@ main .input_form #msg button {
   border-radius: 10%;
   background-color: var(--realwhite);
   box-shadow: rgba(0, 0, 0, 0.4) 0px 0px 50px;
-  transition: transform .5s ease-in-out;
+  /* #1: transition + transform random rotate js injection */
+  /* transition: transform .5s ease-in-out; */
+  /* #2: remove+reinsert animated node element */
+  animation: dice-rot 0.5s ease-in-out both;
 }
-.gambling #dice_game .dice_container .die_box .die {
+@keyframes dice-rot {
+  100% { transform: rotate(360deg); }
+}
+.gambling #dice_game .dice_container .die_box .die_face {
   position: relative;
   width: 100%;
   height: 100%;
   padding: 5px;
 }
-.gambling #dice_game .dice_container .die_box .die .fas {
+.gambling #dice_game .dice_container .die_box .die_face .fas {
   position: absolute;
   top: -12px;
   left: -2px;

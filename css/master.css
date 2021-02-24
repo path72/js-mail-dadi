@@ -107,17 +107,31 @@ main .input_form #msg button {
   box-shadow: rgba(0, 0, 0, 0.4) 0px 0px 50px;
   /* #1: transition + transform random rotate js injection */
   /* transition: transform .5s ease-in-out; */
-  /* #2: remove+reinsert animated node element */
-  animation: dice-rotation 0.6s ease-in-out both;
 }
-@keyframes dice-rotation {
-    0% { transform: rotate(0deg); }
-   15% { transform: rotate(90deg)  translateY(-50px); }
-   30% { transform: rotate(180deg) translateX(+50px); }
-   45% { transform: rotate(180deg) translateY(+50px); }
-   60% { transform: rotate(270deg) translateX(-50px); }
-   75% { transform: rotate(270deg) translateY(0); }
-  100% { transform: rotate(360deg) translateX(0); }
+/* #2: js remove+reinsert of animated node element */
+#die_box_usr {
+  animation: dice-rotation-usr 0.6s ease-in-out both;
+}
+#die_box_sky {
+  animation: dice-rotation-sky 0.6s ease-in-out both;
+}
+@keyframes dice-rotation-usr {
+  0% { transform: rotate(0deg); }
+ 15% { transform: rotate(90deg)  translateY(-50px); }
+ 30% { transform: rotate(180deg) translateX(+50px); }
+ 45% { transform: rotate(180deg) translateY(+50px); }
+ 60% { transform: rotate(270deg) translateX(-50px); }
+ 75% { transform: rotate(270deg) translateY(0);     }
+100% { transform: rotate(360deg) translateX(0);     }
+}
+@keyframes dice-rotation-sky {
+    0% { transform: rotate(360deg); }
+   15% { transform: rotate(270deg) translateY(+50px); }
+   30% { transform: rotate(270deg) translateX(-50px); }
+   45% { transform: rotate(180deg) translateY(-50px); }
+   60% { transform: rotate(180deg) translateX(+50px); }
+   75% { transform: rotate(90deg)  translateY(0);     }
+  100% { transform: rotate(0deg)   translateX(0);     }  
 }
 .gambling #dice_game .dice_container .die_box .die_face {
   position: relative;

@@ -115,7 +115,7 @@ gamblingBtn.addEventListener('click',
         dieFaceUsr = document.getElementById('die_face_usr'),
         dieFaceSky = document.getElementById('die_face_sky'),
         diceMsg    = document.getElementById('dice_msg'),
-        dieBoxUsr  = document.getElementById('die_box_usr');
+        dieBoxUsr  = document.getElementById('die_box_usr'),
         dieBoxSky  = document.getElementById('die_box_sky');
 
     // dice launch [1,6]

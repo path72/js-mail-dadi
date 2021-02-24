@@ -122,6 +122,15 @@ gamblingBtn.addEventListener('click',
     var usrLaunch = Math.floor(Math.random() * 6) + 1;
     var skyLaunch = Math.floor(Math.random() * 6) + 1;
     
+    // message 
+    if      (usrLaunch > skyLaunch) finalMsg = msg1;
+    else if (usrLaunch < skyLaunch) finalMsg = msg2;
+    else                            finalMsg = msg3;
+    console.log( '-- dice game ------------------------\n'+
+                 'user:   '+usrLaunch+'\n'+
+                 'skynet: '+skyLaunch+'\n'+
+                 finalMsg );
+
     // stat
     stat[0].push(usrLaunch);
     stat[1].push(skyLaunch);
@@ -134,15 +143,6 @@ gamblingBtn.addEventListener('click',
                  'skynet statSum[1]='+statSum[1] );
     statMsg = 'Punti totali<br>Tu : '+statSum[0]+'<br> SkyNet : '+statSum[1];
 
-    // message 
-    if      (usrLaunch > skyLaunch) finalMsg = msg1;
-    else if (usrLaunch < skyLaunch) finalMsg = msg2;
-    else                            finalMsg = msg3;
-    console.log( '-- dice game ------------------------\n'+
-                 'user:   '+usrLaunch+'\n'+
-                 'skynet: '+skyLaunch+'\n'+
-                 finalMsg );
-
     // result display
     dieFaceUsr.innerHTML = face[usrLaunch-1];
     dieFaceSky.innerHTML = face[skyLaunch-1];
@@ -150,9 +150,9 @@ gamblingBtn.addEventListener('click',
     diceStat.innerHTML = statMsg;
     diceGame.className = 'show';
 
-    // dice rotation
+    // dice rotation: 2 ways
     
-    // #1 transition + transform rotate js injection
+    // #1 transition + transform random rotate js injection
     // var usrRot = Math.floor(Math.random() * 361);
     // var skyRot = Math.floor(Math.random() * 361);
     // dieBoxUsr.style.transform = 'rotate('+usrRot+'deg)';

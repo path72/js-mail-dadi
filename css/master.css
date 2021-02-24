@@ -14,7 +14,7 @@
 }
 body {
   font-family: 'Inter', sans-serif;
-  background-color: var(--white);
+  background-color: var(--realwhite);
   color: var(--black);
 }
 main {
@@ -25,12 +25,9 @@ main {
 }
 
 /****************************************************************
-**  FORM
+**  EMAIL FORM
 */
 /* INPUT FORM */
-main .input_form {
-  margin: 10px;
-}
 main .input_form .form_box {
   position: relative;
   display: flex;
@@ -51,6 +48,7 @@ main .input_form .form_box .row_in .input_box input {
   border-radius: 5px;
   color: var(--black);
   background-color: var(--white);
+  outline: none;
 }
 main .input_form .form_box .row_in .input_box input:focus {
   color: var(--white);
@@ -60,21 +58,21 @@ main .input_form .form_box .row_in .input_box input:focus {
 main .input_form .form_box .row_in .input_box input:focus::placeholder {
   color: transparent;
 }
-main .input_form .form_box .row_btn {
-  display: flex;
-  justify-content: center;
+/* firefox input red outline */
+main .input_form .form_box .row_in .input_box input:required,
+main .input_form .form_box .row_in .input_box input:invalid {
+  box-shadow: none;
 }
 main .input_form .form_box .row_btn button {
-  margin: 40px 20px 0;
+  margin: 20px 10px 0;
 }
 /* RESPONSE MESSAGE */
-main .input_form #msg {
+main .input_form .form_box #msg {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  padding: 30px 50px;
   color: var(--black);
   border-radius: 5px;
   background-color: var(--white);
@@ -93,16 +91,11 @@ main .input_form #msg button {
 /****************************************************************
 **  DICE GAME
 */
-.gambling {
-  margin: 10px;
-}
 .gambling #dice_game {
   margin-top: 20px;
 }
 .gambling #dice_game .dice_container {
   display: flex;
-  justify-content: center;
-  align-items: center;
 }
 .gambling #dice_game .dice_container .die_box {
   width: 100px;
@@ -115,9 +108,9 @@ main .input_form #msg button {
   /* #1: transition + transform random rotate js injection */
   /* transition: transform .5s ease-in-out; */
   /* #2: remove+reinsert animated node element */
-  animation: dice-rot 0.5s ease-in-out both;
+  animation: dice-rotation 0.5s ease-in-out both;
 }
-@keyframes dice-rot {
+@keyframes dice-rotation {
   100% { transform: rotate(360deg); }
 }
 .gambling #dice_game .dice_container .die_box .die_face {
@@ -128,7 +121,7 @@ main .input_form #msg button {
 }
 .gambling #dice_game .dice_container .die_box .die_face .fas {
   position: absolute;
-  top: -12px;
+  top: -10px;
   left: -2px;
   width: 100%;
   height: 100%;
@@ -137,16 +130,16 @@ main .input_form #msg button {
   background-color: var(--black);
 }
 .gambling #dice_game #dice_msg {
+  display: block;
   margin-top: 10px;
   color: var(--purple);
-  display: block;
 }
 
 /****************************************************************
 **  CARD
 */
 .card {
-  margin: 30px 0;
+  margin: 15px 15px 30px;
   padding: 30px 50px;
   color: var(--black);
   border-radius: 5px;
@@ -187,7 +180,7 @@ button {
   font-size: 1.4em;
   font-weight: 700;
   text-transform: uppercase;
-  /* margin: 10px 0; */
+  margin-top: 10px;
 }
 .ms_txt_1 {
   display: inline-block;
